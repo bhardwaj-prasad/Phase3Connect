@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order - Spicy Burger</title>
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ece9e6, #ffffff);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .order-container {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .order-container img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .order-container h1 {
+            font-size: 28px;
+            color: #333;
+        }
+
+        .order-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .order-container label {
+            text-align: left;
+            margin: 10px 0 5px;
+            color: #555;
+        }
+
+        .order-container input[type="text"],
+        .order-container input[type="number"],
+        .order-container select,
+        .order-container textarea {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            outline: none;
+            width: 100%;
+        }
+
+        .order-container textarea {
+            resize: vertical;
+        }
+
+        .order-container .order-btn {
+            background: #ff4b2b;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .order-container .order-btn:hover {
+            background: #ff3a1b;
+        }
+
+        .order-container p {
+            color: #777;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="order-container">
+        <img src="https://cdn.hackclubber.dev/slackcdn/addf012c5680148cd58a2f25a11383ca.jpg" alt="Spicy Burger">
+        <h1>Order Spicy Burger</h1>
+
+        <form id="orderForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" required>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" required>
+
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" min="1" required>
+
+            <label for="size">Size:</label>
+            <select id="size">
+                <option value="Regular">Regular</option>
+                <option value="Large">Large</option>
+            </select>
+
+            <label for="notes">Custom Notes:</label>
+            <textarea id="notes" placeholder="Any special requests?"></textarea>
+
+            <button type="submit" class="order-btn">Order Now</button>
+        </form>
+        <p>&copy; 2025 Phase3Connect</p>
+    </div>
+
+    <script>
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const quantity = document.getElementById('quantity').value;
+            const size = document.getElementById('size').value;
+            const notes = document.getElementById('notes').value;
+
+            const orderDetails = `
+                **New Order: Spicy Burger**
+                - **Name:** ${name}
+                - **Phone:** ${phone}
+                - **Address:** ${address}
+                - **Quantity:** ${quantity}
+                - **Size:** ${size}
+                - **Notes:** ${notes || 'None'}
+            `;
+
+            // Replace YOUR_WEBHOOK_URL with your Discord Webhook URL
+            fetch('https://discord.com/api/webhooks/1340976346909638677/X005wA1LmTWLdH30T5t_ZGqVqhRzo2BTkc7yI0dIIHaWJgLBD3f-RrsXz4GyTHzHG8hX', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ content: orderDetails })
+            }).then(() => {
+                alert('Order placed successfully!');
+                document.getElementById('orderForm').reset();
+            }).catch(err => console.error('Error:', err));
+        });
+    </script>
+
+</body>
+</html>

@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Phase 3 Connect</title>
+    <title>All Dishes - Phase 3 Connect</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,24 +13,24 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Menu</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </nav>
+        <div class="search-bar">
+            <input type="text" placeholder="Search Dishes..." id="dishSearch">
+            <button onclick="searchDishes()">Search</button>
+        </div>
     </header>
 
     <section class="menu">
-        <h1>Our Menu</h1>
+        <h1>All Available Dishes</h1>
 
-        <h2>Popular Dishes</h2>
         <div class="menu-item">
             <img src="https://cdn.hackclubber.dev/slackcdn/addf012c5680148cd58a2f25a11383ca.jpg" alt="Food 1">
             <div class="menu-details">
                 <h2>Spicy Burger</h2>
-                <p class="description">A delicious, spicy burger with crispy fries.</p>
                 <p class="price">₹599</p>
-                <button class="order-btn" onclick="window.location.href='orders/burger1.html';">Order Now</button>
             </div>
         </div>
 
@@ -39,9 +38,7 @@
             <img src="https://cdn.hackclubber.dev/slackcdn/881ec002e4d9e91a9a3f360355b8ac06.jpg" alt="Food 2">
             <div class="menu-details">
                 <h2>Veggie Pizza</h2>
-                <p class="description">Fresh veggies topped on a cheesy pizza base.</p>
                 <p class="price">₹899</p>
-                <button class="order-btn" onclick="window.location.href='orders/pizza.html';">Order Now</button>
             </div>
         </div>
 
@@ -49,19 +46,9 @@
             <img src="https://cdn.hack.pet/slackcdn/7e09d1c2171e9daa1f9477e92d096d2a.jpg" alt="Food 3">
             <div class="menu-details">
                 <h2>Chicken Wings</h2>
-                <p class="description">Crispy chicken wings with a tangy sauce.</p>
                 <p class="price">₹699</p>
-                <button class="order-btn" onclick="window.location.href='orders/wings.html';">Order Now</button>
             </div>
         </div>
-
-        <button class="view-all-btn" onclick="window.location.href='all-dishes.html';">View All Dishes</button>
-    </section>
-
-    <section class="contact" id="contact">
-        <h1>Contact Us</h1>
-        <p>Customer Care Number: +91 1234567890</p>
-        <p>Email: support@phase3connect.com</p>
     </section>
 
     <footer>
